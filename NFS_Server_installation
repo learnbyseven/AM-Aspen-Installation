@@ -6,3 +6,4 @@ chmod 777 /mydata
 echo "/mydata  *(rw,sync,no_subtree_check,no_root_squash,insecure)" > /etc/exports
 exportfs -a
 systemctl restart nfs-server && systemctl enable nfs-server
+showmount -e
