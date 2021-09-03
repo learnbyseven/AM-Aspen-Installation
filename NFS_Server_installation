@@ -1,0 +1,8 @@
+#
+apt install nfs-kernel-server
+mkdir -p /mydata
+chown -R nobody:nogroup /mydata
+chmod 777 /mydata
+echo "/mydata  *(rw,sync,no_subtree_check,no_root_squash,insecure)" > /etc/exports
+exportfs -a
+systemctl restart nfs-server && systemctl enable nfs-server
