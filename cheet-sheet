@@ -1,0 +1,3 @@
+Manual Inject 
+$ kubectl label namespace <test> istio-injection=enabled 
+$ kubectl get namespace -L istio-injection=enabled 
