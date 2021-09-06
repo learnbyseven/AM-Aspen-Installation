@@ -1,13 +1,9 @@
-#
-#APP TIER simple app, with no DB backend 
-#
----
-apiVersion: apps/v1
+apiVersion: v1
 kind: Namespace
 metadata:
-   name: app-tier
-   label:
-     istio-injection: enabled
+  name: app-tier
+  labels:
+    istio-injection: enabled
 ---
 apiVersion: apps/v1
 kind: Deployment
