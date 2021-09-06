@@ -15,7 +15,7 @@ data:
     server {
        listen  *:80;
        location /users {
-           proxy_pass http://app-svc.app-tier.svc.cluster.local;
+           proxy_pass http://app-tier-svc.app-tier.svc.cluster.local;
                   }
           }
 ---

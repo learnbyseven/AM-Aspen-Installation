@@ -3,27 +3,34 @@
 #
 ---
 apiVersion: apps/v1
+kind: Namespace
+metadata:
+   name: app-tier
+   label:
+     istio-injection: enabled
+---
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-deployment-v1
-  namespace: myapp
+  name: app-tier-deployment-v1
+  namespace: app-tier
   labels:
-    app: myapp
+    app: app-tier
     version: v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: app-tier
       version: v1
   template:
     metadata:
       labels:
-        app: myapp
+        app: app-tier
         version: v1
     spec:
       containers:
-      - name: myapp-v1
+      - name: app-tier-v1
         image: docker.io/giriraj789/ngapp:v1 
         ports:
         - containerPort: 80
@@ -32,25 +39,25 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp-deployment-v2
-  namespace: myapp
+  name: app-tier-deployment-v2
+  namespace: app-tier
   labels:
-    app: myapp
+    app: app-tier
     version: v2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: app-tier
       version: v2
   template:
     metadata:
       labels:
-        app: myapp
+        app: app-tier
         version: v2
     spec:
       containers:
-      - name: myapp-v1
+      - name: app-tier-v2
         image: docker.io/giriraj789/ngapp:v2
         ports:
         - containerPort: 80
@@ -59,13 +66,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: myapp-svc
-  namespace: myapp
+  name: app-tier-svc
+  namespace: app-tier
 spec:
   selector:
-    app: myapp
+    app: app-tier
   ports:
-    - name: myapp-svc-port
+    - name: app-tier-svc-port
       protocol: TCP
       port: 80
       targetPort: 80
