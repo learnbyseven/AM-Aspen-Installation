@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: test-tier
+  name: test-tier-deployment
+  namespace: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-tier
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: test-tier
+    spec:
+      containers:
+      - image: giriraj789/tester:v1
+        name: test-tier
+        resources: {}
+status: {}
