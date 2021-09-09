@@ -1,0 +1,9 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Sidecar
+metadata:
+  name: sc-test-tier
+  namespace: test-tier
+spec:
+  egress:
+  - hosts:
+    - "web-tier/*"
