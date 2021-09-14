@@ -1,5 +1,6 @@
 #
-apt install nfs-kernel-server
+apt install -y nfs-kernel-server
+sleep 1 
 mkdir -p /mydata
 chown -R nobody:nogroup /mydata
 chmod 777 /mydata
