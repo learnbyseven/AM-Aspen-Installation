@@ -1,0 +1,4 @@
+aspen-mesh-controlplane:
+  clusterId: "Any name to identify the cluster"
+  userAuth:
+    type: none
