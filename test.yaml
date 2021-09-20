@@ -33,6 +33,8 @@ spec:
         ports:
         - containerPort: 443
         volumeMounts:
+        
+
         - name: nginx-config
           mountPath: /etc/nginx
           readOnly: true
@@ -52,4 +54,14 @@ spec:
       - name: nginx-ca-certs
         secret:
           secretName: nginx-ca-certs
-          
+
+
+
+
+
+
+Issue : MTLS between egress gateway and external service/endpoint.
+
+Accomplishments: AM team testing the Functionality in the lab environment, Owner Giriraj Rajawat , Tentative timelines to finish this testing by EOD 21-Sep-2021
+
+Next Steps: The findings will be shared and discussed on weekly virtual desk hour
