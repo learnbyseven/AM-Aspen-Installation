@@ -1,0 +1,16 @@
+ROOT CERT
+---------
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=Giriraj Inc./CN=giri.local' -keyout giri.local.key -out giri.local.crt
+
+
+SERVER CERT
+-----------
+openssl req -out server.csr -newkey rsa:2048 -nodes -keyout server.key -subj "/CN=ec2-54-200-243-196.us-west-2.compute.amazonaws.com/O=Giriraj Inc"
+openssl x509 -req -days 365 -CA giri.local.crt -CAkey giri.local.key -set_serial 0 -in server.csr -out server.crt
+
+
+CLIENT CERT
+-----------
+
+openssl req -out client.csr -newkey rsa:2048 -nodes -keyout client.key -subj "/CN=client.giri.local/O=Giriclient organization"
+openssl x509 -req -days 365 -CA giri.local.crt -CAkey giri.local.key -set_serial 1 -in client.csr -out client.crt
