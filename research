@@ -1,4 +1,5 @@
  
+ Tetrate
  https://www.tetrate.io
  Products : 
  1. https://www.tetrate.io/tetrate-service-bridge/
@@ -14,6 +15,7 @@
     - https://academy.tetrate.io/courses/istio-fundamentals
 
 
+Altoros
 https://www.altoros.com/about
 consultancy and professional IT services provider 
 
@@ -31,3 +33,32 @@ Stong point
    - https://www.altoros.com/services/kubernetes?utm_source=altoros&utm_medium=main_menu
 5. Wide range of solution from development, enablement and support
    - https://www.altoros.com/solutions
+   
+   
+Solo.io 
+Founded in 2017 in Cambridge, MA, Solo is backed by Redpoint Ventures and True Ventures
+Leadership team:
+- https://www.solo.io/company/about-us/
+Istio enterprise support 
+- https://www.solo.io/blog/enterprise-support-for-istio-in-production/
+
+Product :
+1. Gloo-edge
+   - An Envoy Proxy-based API Gateway
+     - https://www.solo.io/products/gloo-edge/
+2. Gloo-mesh
+   - Istio service mesh based solution 
+     - https://www.solo.io/products/gloo-mesh/
+3. Gloo-extension
+   Extend and customize your API infrastructure with tooling for WebAssembly, plugins, and operators
+   - https://www.solo.io/products/gloo-extensions/
+     
+Strong point :
+1. Broad customer base 
+   - https://www.solo.io/customers/
+  
+2. Strong partner eco-system 
+   - https://www.solo.io/company/partners/
+   
+3. Extensive range of solutions 
+   - https://www.solo.io/solutions
