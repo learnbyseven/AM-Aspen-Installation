@@ -1,31 +1,89 @@
  
- Tetrate
- https://www.tetrate.io
- Products : 
- 1. https://www.tetrate.io/tetrate-service-bridge/
- 2. https://www.tetrate.io/tetrate-cloud/
- 3. https://www.tetrate.io/tetrate-istio-subscription/
+ Company name: Tetrate
  
- Company genesis : 
- https://www.tetrate.io/about-us/#genesis
+ Company profile
+ - Started by Istio founders, Tetrate is the application networking company managing the complexity of modern, hybrid cloud applications.
+ - https://www.tetrate.io
  
- Strong points :
+ Products & services : 
+ 1. Tetrate-service-bridge
+    - https://www.tetrate.io/tetrate-service-bridge/
+ 2. Tetrate-cloud 
+    - https://www.tetrate.io/tetrate-cloud/
+ 3. Tetrate-istio-subscription 
+    - https://www.tetrate.io/tetrate-istio-subscription/
+ 
+ Company genesis 
+ - https://www.tetrate.io/about-us/#genesis
+ 
+ Strengths 
  1. Envoy author Matt Klein , Advisor Tetrate 
  2. Training academy and istio admin certfication 
     - https://academy.tetrate.io/courses/istio-fundamentals
+    
+    
+    
+Company name: kong inc
 
 
-Altoros
-https://www.altoros.com/about
-consultancy and professional IT services provider 
+Company profile:
+- Leader in APIM/APIG and cloud native solutions, Founded in Italy, HQ SF  
+  - https://konghq.com/about-kong-inc/
 
-Services :
-Istio enablement 
-- https://www.altoros.com/services/istio-enablement
-Istio proffesional support 
-https://www.altoros.com/services/istio-support?utm_source=altoros&utm_medium=main_menu
 
-Stong point
+Product & services:
+1. Kong-Mesh (based on istio) 
+   - https://konghq.com/kong-mesh/
+
+
+Strength
+1. Gartner leader in full API life cycle management
+   - https://konghq.com/blog/kong-named-leader-2020-gartner-magic-quadrant-api/
+2. Niche market player
+3. Wide customer base and partners eco-system including prominent public cloud provider
+   - https://konghq.com/customers/
+
+
+
+Company name: 
+
+
+Company profile: 
+
+
+Product & services:
+
+
+Strength
+
+Company name: 
+
+
+Company profile: 
+
+
+Product & services:
+
+
+Strength
+
+
+
+
+Company name: Altoros
+
+Company profile: 
+- Altoros is a leading IT services provider, offers methodology, custom training, and fully-managed services.
+- https://www.altoros.com/about
+
+
+Product & services:
+1. Istio enablement 
+   - https://www.altoros.com/services/istio-enablement
+2. Istio proffesional support 
+   - https://www.altoros.com/services/istio-support?utm_source=altoros&utm_medium=main_menu
+
+Strength:
 1. 20 years of experience in consulting and services
 2. Suporting more than 2000 orgs. world wide 
 3. 24X7X365 support available 
@@ -36,13 +94,12 @@ Stong point
    
    
 Solo.io 
-Founded in 2017 in Cambridge, MA, Solo is backed by Redpoint Ventures and True Ventures
-Leadership team:
+Company profile 
+- Founded in 2017 in Cambridge, MA, Solo is backed by Redpoint Ventures and True Ventures
 - https://www.solo.io/company/about-us/
-Istio enterprise support 
 - https://www.solo.io/blog/enterprise-support-for-istio-in-production/
 
-Product :
+Product & services :
 1. Gloo-edge
    - An Envoy Proxy-based API Gateway
      - https://www.solo.io/products/gloo-edge/
@@ -53,7 +110,8 @@ Product :
    Extend and customize your API infrastructure with tooling for WebAssembly, plugins, and operators
    - https://www.solo.io/products/gloo-extensions/
      
-Strong point :
+Strength :
+
 1. Broad customer base 
    - https://www.solo.io/customers/
   
@@ -64,35 +122,55 @@ Strong point :
    - https://www.solo.io/solutions
 
 Redhat Inc
-Product:
+Company profile
+- Provides open source software products to enterprises. Founded in 1993, Red Hat has its corporate headquarters in Raleigh
+
+Product & services:
 Redhat Openshift Service mesh 
 - Based on istio
   - https://cloud.redhat.com/learn/topics/service-mesh
 
-Strong point
+Strength
 
 1. Bundeled with OCP subscription 
 2. Leader in open source 
 3. Large customer base and partner eco-system 
 4. One of the top 5 contributor for Istio open source 
 
-Cavet : Inclusive for OCP 
+PS : Inclusive for OCP 
 
 cloudzone 
-https://cloudzone.io/
-https://cloudzone.io/kubernetes-istio/
 
-support 
-https://cloudzone.io/tech-support/
+Company profile
+- Cloud solution provider offering cloud services such as cloud migartion, FinOps, kubernetes and DevOps
+- Head quarter, Tel Aviv-Yafo, Israel
+- https://cloudzone.io/
+
+Product & services
+
+1. Istio enterprise implementation & support 
+   - https://cloudzone.io/tech-support/
+   - https://cloudzone.io/kubernetes-istio
+   
+Strength
+1. Istio listed pro service company 
+   - https://istio.io/latest/about/ecosystem/
 
 Doneops 
-DoneOps was founded by a group of seasoned DevOps personnel.
-- https://www.doneops.com/
-Capabilities 
-- https://www.doneops.com/#toolkit
-Support 
-24X7 
-Service provider 
+Company profile 
+- DoneOps was founded by a group of seasoned DevOps personnel.
+- https://www.doneops.com
 
+Product & Services
+
+1. Istio enterprise implementation & support 
+   - https://www.doneops.com/#toolkit (24x7) 
+
+Additional
+----------
+
+Istio ECO system Provider 
+- List of companies providing istio 
+  - https://istio.io/latest/about/ecosystem/
 
 
