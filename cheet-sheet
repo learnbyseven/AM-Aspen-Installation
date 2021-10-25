@@ -1,3 +1,7 @@
 Manual Inject 
 $ kubectl label namespace <test> istio-injection=enabled 
 $ kubectl get namespace -L istio-injection=enabled 
+
+
+EKS
+curl http://localhost:61679/v1/enis | python -m json.tool
