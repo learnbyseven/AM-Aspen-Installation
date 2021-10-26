@@ -1,0 +1,8 @@
+apiVersion: crd.k8s.amazonaws.com/v1alpha1
+kind: ENIConfig
+metadata: 
+  name: us-west-2
+spec: 
+  securityGroups: 
+    - sg-0aea6f2a6ddd10ca2
+  subnet: subnet-0ef820a7a943a1e55
