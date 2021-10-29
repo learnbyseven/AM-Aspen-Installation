@@ -18,7 +18,10 @@ kubectl version
 export KUBECONFIG=$KUBECONFIG:~/.kube/kubeconfig
 alias k='kubectl'
 
-mkdir -p .kube
+
+
+mkdir -p .kube && touch .kube/kubeconfig
+
 kubeconfig
 apiVersion: v1
 clusters:
