@@ -67,6 +67,8 @@ spec:
   sg-0e9ec14e273b02680
   
   kubectl annotate node ip-10-0-0-61.us-east-2.compute.internal  k8s.amazonaws.com/eniConfig=subnet-a
+  
+  kubectl annotate node ip-10-0-0-110.us-east-2.compute.internal k8s.amazonaws.com/eniConfig=us-east-2a
 
 
 WEST 
