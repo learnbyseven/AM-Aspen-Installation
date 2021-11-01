@@ -82,7 +82,10 @@ Subnets
 
   
   
+--------- SM - same network------
 
+kubectl label namespace istio-system topology.istio.io/network=network1
+kubectl label namespace istio-system topology.istio.io/network=network2
 
 
 
