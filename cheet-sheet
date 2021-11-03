@@ -63,12 +63,17 @@ spec:
   subnet: subnet-0ef820a7a943a1e55
   
   
-  Cluster security group 
-  sg-0e9ec14e273b02680
+
   
-  kubectl annotate node ip-10-0-0-61.us-east-2.compute.internal  k8s.amazonaws.com/eniConfig=subnet-a
+  kubectl annotate node ip-20-0-0-206.us-west-2.compute.internal  k8s.amazonaws.com/eniConfig=us-west-2b
+  kubectl annotate node ip-20-0-0-137.us-west-2.compute.internal  k8s.amazonaws.com/eniConfig=us-west-2b
+  kubectl annotate node ip-20-0-0-166.us-west-2.compute.internal  k8s.amazonaws.com/eniConfig=us-west-2b
   
-  kubectl annotate node ip-10-0-0-110.us-east-2.compute.internal k8s.amazonaws.com/eniConfig=us-east-2a
+
+  subnet-0c4424b1e2cab1108
+  
+  
+  kubectl annotate node ip-10-0-0-251.us-east-2.compute.internal k8s.amazonaws.com/eniConfig=us-east-2b
 
 
 WEST 
