@@ -1,0 +1,48 @@
+aspen-mesh-controlplane:
+  # The name of the cluster where Aspen Mesh is being installed.
+  clusterId: cluster1
+  userAuth:
+    # type can be set to `jwt` or `none`. JWT authentication is highly recommended.
+    type: none
+
+jaeger:
+  enabled: false
+
+aspen-mesh-dashboard:
+  enabled: false
+
+aspen-mesh-secure-ingress:
+  enabled: false
+
+traffic-claim-enforcer:
+  enabled: false
+
+aspen-mesh-metrics-collector:
+  enabled: true
+
+aspen-mesh-event-storage:
+  enabled: true
+
+cert-manager:
+  enabled: true
+
+external-dns:
+  enabled: true
+
+citadel:
+  enabled: true
+
+global:
+  meshID: mesh1
+  multiCluster:
+    enabled: true
+    clusterName: cluster1
+  network: network1
+  globalDomainSuffix: "local"
+  includeEnvoyFilter: false
+meshConfig:
+  defaultConfig:
+    proxyMetadata:
+    # Enable Istio agent to handle DNS requests for known hosts
+    # Unknown hosts will automatically be resolved using upstream dns servers in resolv.conf
+      ISTIO_META_DNS_CAPTURE: "true"
