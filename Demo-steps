@@ -1,4 +1,6 @@
 
+DIFF kubectl -n istio-system logs istiod-84d557f884-xrhfc | grep -i remote
+
 SAME 
 ----
 EAST SAME - kubectl -n test exec -it test-tier-deployment-6856556d8c-dnbw5 -- curl helloworld.helloworld.svc.cluster.local:5000/hello
