@@ -98,4 +98,11 @@ kubectl label namespace istio-system topology.istio.io/network=network1
 kubectl label namespace istio-system topology.istio.io/network=network2
 
 
+SM images 
+
+quay.io/aspenmesh/releases:metrics-collector-service-1.9.8-am1
+
+
+
+
 
