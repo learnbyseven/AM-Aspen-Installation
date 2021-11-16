@@ -102,8 +102,13 @@ SM images
 
 quay.io/aspenmesh/releases:metrics-collector-service-1.9.8-am1
 
+docker run -d --name sysdig-agent --restart always  --privileged --net host --pid host -e ACCESS_KEY=d83d2827-e01c-484f-b94e-99dedbafab34 -e COLLECTOR=collector-static.sysdigcloud.com -e SECURE=true -e TAGS=kic:AM -v /var/run/docker.sock:/host/var/run/docker.sock -v /dev:/host/dev -v /proc:/host/proc:ro -v /boot:/host/boot:ro -v /lib/modules:/host/lib/modules:ro -v /usr:/host/usr:ro --shm-size=512m sysdig/agent
 
 
+docker run -d -v /var/run:/var/run --privileged --network host -e AM_COLLECTOR_ENDPOINT=https://secure.sysdig.com/internal/scanning/scanning-analysis-collector -e ACCESS_KEY=d83d2827-e01c-484f-b94e-99dedbafab34 -e VERIFY_CERTIFICATE=false quay.io/sysdig/node-image-analyzer:latest
+
+
+95d5ada3f57
 
 
 
