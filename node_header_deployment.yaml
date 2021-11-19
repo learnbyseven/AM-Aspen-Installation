@@ -1,1 +1,34 @@
-docker.io/giriraj789/node:header
+apiVersion: v1
+kind: Service
+metadata:
+  name: node
+  labels:
+    run: node
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    protocol: TCP
+    nodePort: 30008
+  selector:
+    run: node
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node
+spec:
+  selector:
+    matchLabels:
+      run: node
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: node
+    spec:
+      containers:
+      - name: node
+        image: docker.io/giriraj789/node:header
+        ports:
+        - containerPort: 80
