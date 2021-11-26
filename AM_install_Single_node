@@ -1,0 +1,123 @@
+File name :
+
+/manifests/charts/istio-control/istio-discovery/charts/aspen-mesh-event-storage/values.yaml
+
+Change True to False 
+ 
+ 16 ## Persist data to a persistent volume
+ 17 persistence:
+ 18   enabled: false 
+ 
+ Change 3 to 1
+ 
+ 49   cluster_domain: cluster.local
+ 50   cluster_name: aspen-mesh-event-storage
+ 51   cluster_size: 1
+ 52   seed_size: 1
+ 53   num_tokens: 256
+ 
+ 
+ manifests/charts/istio-control/istio-discovery/charts/aspen-mesh-metrics-collector/values.yaml
+ 
+Change True to False
+ 
+ 49   persistentVolume:
+ 50     ## If true, metrics-collector will create/use a Persistent Volume Claim
+ 51     ## If false, use emptyDir
+ 52     ##
+ 53     enabled: false
+ 
+ 
+108   persistentVolume:
+109     ## If true, alertmanager will create/use a Persistent Volume Claim
+110     ## If false, use emptyDir
+111     ##
+112     enabled: false
+
+manifests/charts/istio-control/istio-discovery/charts/aspen-mesh-controlplane
+change replicaCount: 2 to replicaCount: 1
+
+ 3 modelruntimeImage: # Override with appropriate image and tag.
+  4 
+  5 replicaCount: 1
+  
+  
+  
+  
+  aspen-mesh-controlplane:
+  # The name of the cluster where Aspen Mesh is being installed.
+  clusterId: cluster1
+  userAuth:
+    # type can be set to `jwt` or `none`. JWT authentication is highly recommended.
+    type: none
+
+jaeger:
+  enabled: false
+
+aspen-mesh-dashboard:
+  enabled: false
+
+aspen-mesh-secure-ingress:
+  enabled: false
+
+traffic-claim-enforcer:
+  enabled: false
+
+aspen-mesh-metrics-collector:
+  enabled: true
+
+aspen-mesh-event-storage:
+  enabled: true
+
+cert-manager:
+  enabled: false
+
+external-dns:
+  enabled: false
+
+citadel:
+  enabled: true
+
+aspen-mesh-packet-inspector:
+  enabled: true
+  analysis:
+    address: aspen-mesh-analysis-emulator.analysis-emulator:21000
+
+aspen-mesh-packet-inspector:
+  enabled: true
+  nodePort: 31672
+  gcb:
+    address: aspen-mesh-gcbemulator.gcbemulator:21000
+    maxConnections: 1
+    maxConcurrentMessages: 5
+    reconnectTime: 5
+    maxErrorRetries: 3
+    verbose: false
+  tapfilterBufferSize: 5kb
+  tapfilterTimeout: 1000ms
+  macAddress: 00:00:00:00:00:00
+  daemonSetBufferMemoryPercent: 50
+
+pilot:
+  autoscaleMin: 1
+  autoscaleMax: 2
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2048Mi
+
+global:
+  certificateCustomFields: true
+  proxy:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 2000m
+        memory: 1024Mi
+  meshID: mesh1
+  multiCluster:
+    clusterName: cluster1
+  network: network1
