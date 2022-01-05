@@ -115,7 +115,8 @@ COMMANDS :
 $istioctl proxy-status
 $istioctl proxy-config secret web-78d5fb84c6-2qxzw.web -o json | jq '.dynamicActiveSecrets[0].secret.tlsCertificate.certificateChain.inlineBytes' -r | base64 -d | openssl x509 -noout -text
 
-
+OUTPUT 
+URI:spiffe://cluster.local/ns/web/sa/default
 
 
 
