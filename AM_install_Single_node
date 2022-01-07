@@ -1,3 +1,45 @@
+
+-------
+- NEW -
+-------
+Multicluster 
+
+CLUSTER -1 NETWORK1 
+
+1. kubectl create namespace istio-system
+2. kubectl create secret generic cacerts -n istio-system \
+      --from-file=certs/cluster1/ca-cert.pem \
+      --from-file=certs/cluster1/ca-key.pem \
+      --from-file=certs/cluster1/root-cert.pem \
+      --from-file=certs/cluster1/cert-chain.pem
+
+3. kubectl label namespace istio-system topology.istio.io/network=network1
+4. helm install istio-base manifests/charts/base --namespace istio-system
+5. kubectl get crds | grep 'istio.io\|cert-manager.io\|aspenmesh.io' | wc -l
+7. helm install istiod manifests/charts/istio-control/istio-discovery  --namespace istio-system --values values.yaml
+
+6. istioctl --kubeconfig=west_kubeconfig.yaml x create-remote-secret --name west | kubectl apply -f -   
+7. helm upgrade istiod manifests/charts/istio-control/istio-discovery  --namespace istio-system --values values.yaml
+
+
+CLUSTER 2 - NETWORK1
+
+kubectl create namespace istio-system
+kubectl create secret generic cacerts -n istio-system \
+      --from-file=certs/cluster2/ca-cert.pem \
+      --from-file=certs/cluster2/ca-key.pem \
+      --from-file=certs/cluster2/root-cert.pem \
+      --from-file=certs/cluster2/cert-chain.pem
+
+kubectl label namespace istio-system topology.istio.io/network=network1
+
+
+
+
+-------
+- OLD -
+-------
+
 File name :
 
 /manifests/charts/istio-control/istio-discovery/charts/aspen-mesh-event-storage/values.yaml
