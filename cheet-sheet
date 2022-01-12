@@ -1,7 +1,8 @@
-Aspen-baluster
-Aspen-Reinforcers 
-Aspen-conveyors
-Aspen Tiger team 
+JAEGER
+curl "10.102.33.28:16686/tracing/api/traces?limit=5&lookback=48h&service=jaeger-query"
+
+
+
 
 Manual Inject 
 $ kubectl label namespace <test> istio-injection=enabled 
