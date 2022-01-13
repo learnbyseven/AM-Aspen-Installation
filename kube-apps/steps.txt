@@ -1,0 +1,3 @@
+kubectl label ns {client,server} istio-injection=enabled
+kubectl ns server create -f server.yaml 
+kubectl ns client create -f client.yaml 
