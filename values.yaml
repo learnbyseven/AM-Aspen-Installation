@@ -1,4 +1,71 @@
 aspen-mesh-controlplane:
-  clusterId: "Any name to identify the cluster"
+  # The name of the cluster where Aspen Mesh is being installed.
+  clusterId: cluster1
   userAuth:
+    # type can be set to `jwt` or `none`. JWT authentication is highly recommended.
     type: none
+
+aspen-mesh-dashboard:
+  enabled: false
+
+aspen-mesh-secure-ingress:
+  enabled: false
+
+traffic-claim-enforcer:
+  enabled: true
+
+aspen-mesh-metrics-collector:
+  enabled: true
+
+aspen-mesh-event-storage:
+  enabled: true
+
+cert-manager:
+  enabled: false
+
+external-dns:
+  enabled: false
+
+citadel:
+  enabled: false
+
+pilot:
+  autoscaleMin: 1
+  autoscaleMax: 1
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 500m
+      memory: 2048Mi
+
+global:
+  tracer:
+   zipkin:
+     address: aspen-mesh-jaeger-collector.istio-system:9411
+  proxy:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 2000m
+        memory: 1024Mi
+  meshID: mesh1
+  certificateCustomFields: True
+  multiCluster:
+    clusterName: cluster1
+  network: network1
+meshConfig:
+  defaultConfig:
+    tracing:
+      sampling: 100
+jaeger:
+  enabled: true
+  collector:
+    samplingConfig: |-
+      {
+        "default_strategy": {
+          "type": "const",
+          "param": 1
+        }
+      }
