@@ -1,3 +1,8 @@
-kubectl label ns {client,server} istio-injection=enabled
+kubectl create ns client
+kubectl label ns client istio-injection=enabled
+kubectl create ns server
+kubectl label ns server istio-injection=enabled
 kubectl -n client create -f https://raw.githubusercontent.com/learnbyseven/Service-Mesh/main/kube-apps/client.yaml
 kubectl -n server create -f https://raw.githubusercontent.com/learnbyseven/Service-Mesh/main/kube-apps/server.yaml
+kubectl -n client create -f client.yaml
+kubectl -n client create -f server.yaml
