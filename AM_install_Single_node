@@ -33,7 +33,7 @@ kubectl create secret generic cacerts -n istio-system \
 
 kubectl label namespace istio-system topology.istio.io/network=network1
 
-
+helm install istiod manifests/charts/istio-control/istio-discovery  --namespace istio-system --values values.yaml --set global.proxy.image=proxyv2-full-distro --set global.proxy_init.image=proxyv2-full-distro
 
 
 -------
