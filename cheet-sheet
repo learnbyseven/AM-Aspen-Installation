@@ -1,3 +1,8 @@
+Join Zoom Meeting
+Meeting ID: 397 367 5318
+Passcode: 123456
+
+
 JAEGER
 curl "10.102.33.28:16686/tracing/api/traces?limit=5&lookback=48h&service=jaeger-query"
 
