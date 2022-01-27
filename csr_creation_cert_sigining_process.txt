@@ -1,0 +1,12 @@
+//CSR & KEY creation
+$ openssl req -out client.csr -newkey rsa:2048 -nodes -keyout client.key -subj "/CN=curl.example.com/O=test" 
+
+// CSR SIGNING
+openssl x509 -req -in curl.csr  -CA ca-cert.pem  -CAkey ca-key.pem  -CAcreateserial -out curl-nospiffe.crt -days 365 -sha256
+
+////CSR & KEY creation WITH SPIFEE
+openssl req -new -out curl-spiffe.csr -newkey rsa:2048 -nodes -keyout curl-spiffe.key -subj "/CN=curl.example.com/O=test" -addext "subjectAltName = URI:spiffe://cluster.local/test"
+
+openssl x509 -req -in curl-spiffe.csr -CA ca-cert.pem -CAkey ca-key.pem -CAcreateserial /
+-out curl-spiffe.crt -days 365 -sha256 -extensions v3_ca -extfile san.cfg
+
