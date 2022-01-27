@@ -39,11 +39,22 @@ helm install istiod manifests/charts/istio-control/istio-discovery  --namespace 
 
 INGRESS
 -------
+//Perquisites
+vi manifests/charts/gateways/istio-ingress/values.yaml
+Line 29 -- replicaCount: 2->1
+Line 33 -- autoscaleMin: 2->1
 helm install istio-ingress manifests/charts/gateways/istio-ingress --namespace istio-system --values values.yaml
 
 EGRESS
 ------
+//Perquisites
+
+vi manifests/charts/gateways/istio-egress/values.yaml
+Line 32 -- Change replicaCount: 2->1
+Line 36 -- Change autoscaleMin: 2->1
 helm install istio-egress manifests/charts/gateways/istio-egress --namespace istio-system --values values.yaml
+
+
 
 -------
 - OLD -
