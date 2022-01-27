@@ -4,7 +4,7 @@
 -------
 Multicluster 
 
-CLUSTER -1 NETWORK1 
+//CLUSTER -1 NETWORK1 
 
 1. kubectl create namespace istio-system
 2. kubectl create secret generic cacerts -n istio-system \
@@ -22,7 +22,7 @@ CLUSTER -1 NETWORK1
 7. helm upgrade istiod manifests/charts/istio-control/istio-discovery  --namespace istio-system --values values.yaml
 
 
-CLUSTER 2 - NETWORK1
+//CLUSTER 2 - NETWORK1
 
 kubectl create namespace istio-system
 kubectl create secret generic cacerts -n istio-system \
@@ -35,12 +35,21 @@ kubectl label namespace istio-system topology.istio.io/network=network1
 
 helm install istiod manifests/charts/istio-control/istio-discovery  --namespace istio-system --values values.yaml --set global.proxy.image=proxyv2-full-distro --set global.proxy_init.image=proxyv2-full-distro
 
+//OPTIONAL
+
+INGRESS
+-------
+helm install istio-ingress manifests/charts/gateways/istio-ingress --namespace istio-system --values values.yaml
+
+EGRESS
+------
+helm install istio-egress manifests/charts/gateways/istio-egress --namespace istio-system --values values.yaml
 
 -------
 - OLD -
 -------
 
-File name :
+//File name :
 
 /manifests/charts/istio-control/istio-discovery/charts/aspen-mesh-event-storage/values.yaml
 
