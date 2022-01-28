@@ -55,10 +55,16 @@ Line 36 -- Change autoscaleMin: 2->1
 helm install istio-egress manifests/charts/gateways/istio-egress --namespace istio-system --values values.yaml
 
 
+UPGRADE 
+helm upgrade istiod manifests/charts/istio-control/istio-discovery  --namespace istio-system --values values.yaml
+helm upgrade istio-ingress manifests/charts/gateways/istio-ingress --namespace istio-system --values values.yaml
+helm upgrade istio-egress manifests/charts/gateways/istio-egress --namespace istio-system --values values.yaml
 
 -------
 - OLD -
 -------
+
+
 
 //File name :
 
