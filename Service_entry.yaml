@@ -1,0 +1,122 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: gr-service-entry
+  namespace: sam # Coupled: namespace name 
+spec:
+  hosts:
+    - ngp.192.168.1.99.nip.io # Coupled: FQDN 
+  ports:
+    - number: 8181 # Coupled: port 
+      name: https
+      protocol: HTTPS
+  resolution: DNS
+  location: MESH_EXTERNAL
+  
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: gr-external-destination-rule
+  namespace: test # Coupled: namespace name
+spec:
+  host: ngp.192.168.1.99.nip.io # Coupled: FQDN
+  trafficPolicy:
+    loadBalancer:
+      simple: ROUND_ROBIN
+    portLevelSettings:
+      - port:
+          number: 8181 # Coupled: port
+        tls:
+          mode: MUTUAL
+          credentialName: gr-istio-mtls-model # Coupled: secret name 
+          sni: ngp.192.168.1.99.nip.io # Coupled: FQDN
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: gr-istio-egressgateway # Coupled: gateway name 
+  namespace: test # Coupled: namespace name 
+spec:
+  selector:
+    istio: egressgateway
+  servers:
+  - port:
+      number: 443 # Coupled: port 
+      name: https
+      protocol: HTTPS
+      hosts:
+      - ngp.192.168.1.99.nip.io  # Coupled: FQDN 
+        tls:
+          mode: ISTIO_MUTUAL
+      
+                
+---       
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: gr-virtual-service
+  namespace: test # Coupled: namespace name
+  exportTo:
+  - "."
+  - istio-system
+  hosts:
+  - ngp.192.168.1.99.nip.io # Coupled: FQDN 
+  gateways:
+  - gr-istio-egressgateway # Coupled: gateway name 
+  - mesh
+  http:
+    - match:
+        - gateways:
+            - mesh
+          port: 80 # Coupled: port 
+      route:
+        - destination:
+            host: istio-egressgateway.istio-system.svc.cluster.local # Coupled: gateway name (configured by CSM infra)
+            port:
+              number: 443 # Coupled: port 
+    - match:
+        - gateways:
+            - gr-istio-egressgateway # Coupled: gateway name 
+          port: 443 # Coupled: port 
+      route:
+        - destination:
+            host: ngp.192.168.1.99.nip.io # Coupled: FQDN 
+            port:
+              number: 8181 # Coupled: port 
+
+
+
+
+
+
+
+
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: external-svc-redirect
+spec:
+  hosts:
+  - wikipedia.org
+  location: MESH_EXTERNAL
+  ports:
+  - number: 443
+    name: https
+    protocol: TLS
+  resolution: NONE
+
+----Example----
+ ports:
+  - number: 443
+    name: https
+    protocol: TLS
+  resolution: DNS
+
+resolution: STATIC
+  endpoints:
+  - address: 2.2.2.2
+  - address: 3.3.3.3
