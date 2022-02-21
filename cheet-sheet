@@ -127,4 +127,23 @@ URI:spiffe://cluster.local/ns/web/sa/default
 
 
 
+Telemetry , Tracing , Service discovery, Security-mTLS , 
+
+LB (Dis) , health Check (failover) , Timeout/Circuit break
+
+HA - Redundancy
+Resiliency - Recover from temp. Failure, Error handing , error correction
+
+CP - Regions/AZ/DNS-route53/IAM/LB
+
+Kube (Cluster fault domain) 
+M1 m2 m3
+W-1,2 W3-4 , W5-6
+
+
+
+
+
+
+
 
