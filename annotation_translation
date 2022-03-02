@@ -18,7 +18,11 @@ server-alias: = GW host
 auth-tls-secret = GW - Credentials
 auth-tls-verify-client = EF
 auth-tls-verify-depth = NA custom validator extension 
-cors-allow-credentials = VS,CORS, allow-method, allow-credential, allow-header,cors-allow-origin,enable-cors
+cors-allow-credentials = VS
+cors-allow-headers = VS
+cors-allow-origin = VS
+cors-allow-methods = VS
+Access-Control-Allow-Origin = VS
 proxy_set_header = VS header manipulation 
 URI or Path = VS
 HTTP Scheme = VS
@@ -51,6 +55,10 @@ proxy_set_header Connection
 proxy-body-size = 
 proxy-read-timeout = 
 proxy-send-timeout =
+proxy_upstream_name = 
+header_filter_by_lua_block = 
+limit_except = 
+If/Else conditional statement = 
 
 
 
