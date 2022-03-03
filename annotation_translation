@@ -11,13 +11,107 @@ NR - Not related
 ----------------------
 ----------------------
 
+EXAMPLE 1
+---------
+
+
 app-root: =  VS (HTTP-rewrite)
 proxy-body-size = EF 
 proxy-connect-timeout = VS (Timeout/retries) 
+proxy-read-timeout =  
+proxy-send-timeout = 
+proxy_set_header X-Forwarded-Host
+proxy_set_header X-Forwarded-Server
+proxy_set_header X-Forwarded-For
+location 
+proxy_http_version
+proxy_set_header = 
+proxy_pass
+ingress.class
+
+
+EXAMPLE 2
+---------
+
+Rewrite URI (regex)
+proxy-body-size (Dup)
+proxy-read-timeout (Dup)
+proxy-send-timeout (Dup)
 server-alias: = GW host
+ingress.class (Dup)
+
+
+EXAMPLE 3
+---------
+location
+set
+rewrite_by_lua_block
+header_filter_by_lua_block
+body_filter_by_lua_block
+log_by_lua_block
+$scheme 
+if/else
+more_set_headers
+$proxy_upstream_name
+$ngx_re
+$proxy_host
+client_max_body_size 
+proxy_set_header Upgrade                  $http_upgrade;
+proxy_set_header Connection               $connection_upgrade;
+proxy_set_header X-Request-ID             $req_id;
+proxy_set_header X-Real-IP                $the_real_ip;
+proxy_set_header X-Forwarded-For          $the_real_ip;
+proxy_set_header X-Forwarded-Host         $best_http_host;
+proxy_set_header X-Forwarded-Port         $pass_port;
+proxy_set_header X-Forwarded-Proto        $pass_access_scheme;
+proxy_set_header X-Original-URI           $request_uri;
+proxy_set_header X-Scheme                 $pass_access_scheme;
+proxy_set_header X-Original-Forwarded-For $http_x_forwarded_for;
+proxy_set_header Proxy  "";
+proxy_connect_timeout   5s;
+proxy_send_timeout      60s;
+proxy_read_timeout      60s;
+proxy_buffering         off;
+proxy_buffer_size       4k;
+proxy_buffers           4 4k;
+proxy_request_buffering on;
+proxy_http_version      1.1;
+proxy_cookie_domain     off;
+proxy_cookie_path       off;
+proxy_next_upstream error timeout;
+proxy_next_upstream_tries 3;
+proxy_pass                https://upstream_balancer;
+proxy_redirect            off;
+
+
+Example 4
+---------
+
+limit_except GET POST
+location uri regx
+if/else
+$server_name
+$proxy_upstream_name
+proxy_pass
+
+
+
+Example 5
+---------
+
 auth-tls-secret = GW - Credentials
 auth-tls-verify-client = EF
 auth-tls-verify-depth = NA custom validator extension 
+set $cntnt_type
+$http_content_type
+$request_method
+proxy_set_header Content-Type $cntnt_type
+rewrite-target: /
+
+Example 6
+---------
+
+
 cors-allow-credentials = VS
 cors-allow-headers = VS
 cors-allow-origin = VS
@@ -30,8 +124,7 @@ HTTP Method = VS
 HTTP Headers = VS
 HTTP Query Parameters = VS
 Authority = VS 
-proxy-read-timeout =  
-proxy-send-timeout =  
+
 proxy_buffering =
 proxy_buffer_size = 
 proxy_buffers = 
@@ -48,10 +141,7 @@ Proxy_rewrite =
 more_set_headers = 
 limit_except = 
 client_max_body_size = 
-proxy_set_header X-Forwarded-Host = 
-proxy_set_header X-Forwarded-Server = 
-proxy_set_header Upgrade = 
-proxy_set_header Connection
+
 proxy-body-size = 
 proxy-read-timeout = 
 proxy-send-timeout =
