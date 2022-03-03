@@ -20,14 +20,15 @@ proxy-body-size = EF
 proxy-connect-timeout = VS (Timeout/retries) 
 proxy-read-timeout =  
 proxy-send-timeout = 
-proxy_set_header X-Forwarded-Host
-proxy_set_header X-Forwarded-Server
-proxy_set_header X-Forwarded-For
-location 
-proxy_http_version
-proxy_set_header = 
-proxy_pass
-ingress.class
+proxy_set_header X-Forwarded-Host $host
+proxy_set_header X-Forwarded-Server $host
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
+location /xyz
+proxy_http_version 1.1;
+proxy_set_header Upgrade $http_upgrade = 
+proxy_set_header Connection "upgrade"  = 
+proxy_pass http://xyz
+ingress.class "xyz"
 
 
 EXAMPLE 2
@@ -43,15 +44,15 @@ ingress.class (Dup)
 
 EXAMPLE 3
 ---------
-location
-set
+location (regex)
+set {$namespace ,$ingress_name, $service_name, $service_port, $location_path}
 rewrite_by_lua_block
 header_filter_by_lua_block
 body_filter_by_lua_block
 log_by_lua_block
+if/else (conditional statement)
 $scheme 
-if/else
-more_set_headers
+more_set_headers Strict-Transport-Security:max-age=15724800; includeSubDomains"
 $proxy_upstream_name
 $ngx_re
 $proxy_host
@@ -88,10 +89,8 @@ Example 4
 ---------
 
 limit_except GET POST
-location uri regx
-if/else
-$server_name
-$proxy_upstream_name
+location uri (regex) (key|value) 
+if/else {$server_name, $proxy_upstream_name}
 proxy_pass
 
 
@@ -111,44 +110,35 @@ rewrite-target: /
 Example 6
 ---------
 
-
+auth-tls-secret = GW - Credentials
+auth-tls-verify-client = EF
+$http_origin
+more_set_headers "Access-Control-Allow-Origin: $http_origin"
 cors-allow-credentials = VS
 cors-allow-headers = VS
 cors-allow-origin = VS
 cors-allow-methods = VS
-Access-Control-Allow-Origin = VS
-proxy_set_header = VS header manipulation 
-URI or Path = VS
-HTTP Scheme = VS
-HTTP Method = VS
-HTTP Headers = VS
-HTTP Query Parameters = VS
-Authority = VS 
+enable-cors: "true"
+proxy-connect-timeout: "600"
+proxy-read-timeout: "600"
+proxy-send-timeout: "600"
+ingress.class: intranet
 
-proxy_buffering =
-proxy_buffer_size = 
-proxy_buffers = 
-ingress.class: intranet = ? 
-proxy_request_buffering = 
-proxy_http_version = 
-proxy_cookie_domain = 
-proxy_cookie_path = 
-proxy_next_upstream = 
-proxy_next_upstream_tries = 
-proxy_pass = 
-proxy_redirect = 
-Proxy_rewrite = 
-more_set_headers = 
-limit_except = 
-client_max_body_size = 
 
-proxy-body-size = 
-proxy-read-timeout = 
-proxy-send-timeout =
-proxy_upstream_name = 
-header_filter_by_lua_block = 
-limit_except = 
-If/Else conditional statement = 
+
+Example 7
+---------
+
+ingress.class: intranet
+rewrite-target: /
+location (regx) 
+proxy_pass
+proxy_set_header Host $http_x_forwarded_host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_connect_timeout 10s;
+proxy_send_timeout 120s;
+proxy_read_timeout 120s;
+client_max_body_size 300m;
 
 
 
