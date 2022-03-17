@@ -1,1 +1,45 @@
 
+Authentication polcies 
+- Peer - istio upgrade traffic mTLS 
+- Request - App need to attach JWT
+* Apply to request 
+
+* Storge scope - all /namespace
+Kind : Peer authentication 
+* empty selector applies to all , Thus selector helps in defining the scope 
+Kind: Request authentication
+
+Order 
+* One mesh wide peer authentication policy 
+* One namespace-wide peer authentication policy 
+
+Narrowest matching polocies order 
+Workload- Namespace- Mesh
+However, it is still a good practice to avoid having multiple mesh-wide or namespace-wide request authentication policies.
+
+Kind : Peer authentication specify mTLS mode (target) 
+Permissive
+Strict
+Disable 
+
+*Mesh-wide peer authentication policies with an unset mode use the PERMISSIVE mode by default.
+* PortlevelmTLS
+target port should be same as port level mTLS to bind request
+
+
+Request authentication 
+-----------------------
+Validate JWT
+Values to validate
+- Location of the token in Req
+- The issuer or the req.
+- JWKS (Public) 
+* Default accept; No rejection, Create authorization rule for restriction 
+- More than one JWT for more than one location 
+
+NOTE 
+Request authentication policies can specify more than one JWT if each uses a unique location. When more than one policy matches a workload, Istio combines all rules as if they were specified as a single policy. This behavior is useful to program workloads to accept JWT from different providers. However, requests with more than one valid JWT are not supported because the output principal of such requests is undefined.
+
+Source.principal for auth
+
+
