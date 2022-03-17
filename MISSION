@@ -42,4 +42,7 @@ Request authentication policies can specify more than one JWT if each uses a uni
 
 Source.principal for auth
 
+Authroization
+-------------
 
+Note the “deny by default” behavior applies only if the workload has at least one authorization policy with the ALLOW action.
