@@ -1,0 +1,6 @@
+kubectl create ns blue
+kubectl create ns green
+kubectl label ns blue istio-injection=enabled 
+kubectl label ns green istio-injection=enabled
+kubectl -n blue create -f https://raw.githubusercontent.com/learnbyseven/NGINX/master/demo/blue-green/kub/deployment_blue.yaml
+kubectl -n green create -f https://raw.githubusercontent.com/learnbyseven/NGINX/master/demo/blue-green/kub/deployment_green.yaml
