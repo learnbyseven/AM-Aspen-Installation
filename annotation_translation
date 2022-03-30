@@ -142,7 +142,24 @@ client_max_body_size 300m;
 
 
 
+In a service mesh environment, Exposing applications on a single or multiple paths and traffic redirection and matching can be handled via a Virtual service object. Following example 
 
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: confluence-route
+spec:
+  hosts:
+  - confluence-internal-pre.cxb-conflu-pre.svc.cluster.local
+  http:
+  - match:
+    - uri:
+        prefix: /
+    rewrite:
+      uri: /confluence
+    route:
+    - destination:
+        host: confluence-internal-pre.cxb-conflu-pre.svc.cluster.local
 
 
 
