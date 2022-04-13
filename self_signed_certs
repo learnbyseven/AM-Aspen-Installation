@@ -28,5 +28,5 @@ openssl req -out server.csr -newkey rsa:2048 -nodes -keyout server.key -subj "/C
 openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 2 -in server.csr -out server.crt
 
 
-kubectl create secret -n istio-system generic client-credential --from-file=tls.key=client.key \
-  --from-file=tls.crt=client.crt --from-file=ca.crt=ca.crt
+kubectl create secret -n istio-system generic client-credential --from-file=tls.key=client.key --from-file=tls.crt=client.crt --from-file=ca.crt=ca.crt
+kubectl create secret -n test generic client-certs --from-file=tls.key=client.key --from-file=tls.crt=client.crt --from-file=ca.crt=ca.crt
