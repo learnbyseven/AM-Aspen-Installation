@@ -12,6 +12,13 @@ ServerCERT
 openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 1 -in server.csr -out server.crt
 
 
+ClientCERT
+----------
+openssl req -out client.example.com.csr -newkey rsa:2048 -nodes -keyout client.example.com.key -subj "/CN=client.example.com/O=client organization"
+openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 1 -in client.example.com.csr -out client.crt
+
+
+
 QUICK COPY/PASTE
 ----------------
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=amz Inc./CN=amazonaws.com' -keyout ca.key -out ca.crt
