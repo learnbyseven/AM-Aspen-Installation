@@ -30,3 +30,11 @@ openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 2 -in s
 
 kubectl create secret -n istio-system generic client-credential --from-file=tls.key=client.key --from-file=tls.crt=client.crt --from-file=ca.crt=ca.crt
 kubectl create secret -n test generic client-certs --from-file=tls.key=client.key --from-file=tls.crt=client.crt --from-file=ca.crt=ca.crt
+kubectl create secret -n istio-system generic fake-certs --from-file=tls.key=client.key --from-file=tls.crt=client.crt --from-file=ca.crt=ca.crt
+
+
+FAKECERTS
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=myown.in./CN=myown.in' -keyout ca.key -out ca.crt
+openssl req -out client.csr -newkey rsa:2048 -nodes -keyout client.key -subj "/CN=fake.myapp.in/O=client organization"
+openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 1 -in client.csr -out client.crt
+
