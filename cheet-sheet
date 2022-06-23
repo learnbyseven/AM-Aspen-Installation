@@ -165,6 +165,8 @@ benefits
 - Compliance with standards that require network segmentation
 
 
+#Attaching secret to K namespace
+kubectl create secret -n istio-system generic ca  --from-file=ca.crt=ca.crt
 
 
 
