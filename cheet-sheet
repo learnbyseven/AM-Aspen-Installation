@@ -170,6 +170,13 @@ kubectl create secret -n istio-system generic ca  --from-file=ca.crt=ca.crt
 
 
 
+View contents of attached secrets
+---------------------------------
+
+
+kubectl -n istio-system get secrets cacerts -o jsonpath='{.data}' (copy the double inverted comma piece) 
+
+| base64 --decode
 
 
 
