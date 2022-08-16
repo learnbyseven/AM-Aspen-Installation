@@ -1,7 +1,8 @@
 https://istio.io/latest/docs/tasks/traffic-management/ingress/ingress-sni-passthrough/
 
 Selfsigned certs 
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+----------------
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout web.example.com.key -out web.example.com.key.crt
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx.key -out /etc/ssl/certs/nginx.crt
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout my.key -out my.crt
 
