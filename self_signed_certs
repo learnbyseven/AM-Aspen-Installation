@@ -2,14 +2,18 @@
 CA
 --
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=amz Inc./CN=amazonaws.com' -keyout ca.key -out ca.crt
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=giri Inc ./CN=example.com' -keyout ca.key -out ca.crt
+
 
 CSR/ServerKEY
 -------------
 openssl req -out server.csr -newkey rsa:2048 -nodes -keyout server.key -subj "/CN=ec2-15-207-229-119.ap-south-1.compute.amazonaws.com/O=amz"
+openssl req -out server.csr -newkey rsa:2048 -nodes -keyout web.example.com.key -subj "/CN=web.example.com/O=giri Inc."
 
 ServerCERT
 ----------
 openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 1 -in server.csr -out server.crt
+openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 1 -in server.csr -out web.example.com.crt
 
 
 ClientCERT
