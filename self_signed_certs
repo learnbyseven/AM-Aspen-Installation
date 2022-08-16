@@ -20,8 +20,15 @@ ClientCERT
 ----------
 openssl req -out client.csr -newkey rsa:2048 -nodes -keyout client.key -subj "/CN=client.myapp.com/O=client organization"
 openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 1 -in client.csr -out client.crt
+
+openssl req -out client.csr -newkey rsa:2048 -nodes -keyout client.key -subj "/CN=client.example.com/O=giri Inc."
+openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 1 -in client.csr -out client.crt
+
+
 Verify :
 curl --cert client.crt --key client.key --cacert ca.crt https://ec2-15-207-229-119.ap-south-1.compute.amazonaws.com:8181
+
+curl --cert client.crt --key client.key --cacert ca.crt https://web.example.com
 
 
 
