@@ -11,5 +11,5 @@
 
 
 ## m-TLS to external service using custom certs
-![Image of SM](https://github.com/learnbyseven/SERVICEMESH/SM-usecases/blob/main/m-TLS_customcerts_externalsvc/external-service-mTLS.png)
+![Image of SM](https://github.com/learnbyseven/SERVICEMESH/blob/main/SM-usecases/m-TLS_customcerts_externalsvc/external-service-mTLS.png)
 
