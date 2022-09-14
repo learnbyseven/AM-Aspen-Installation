@@ -179,5 +179,13 @@ kubectl -n istio-system get secrets cacerts -o jsonpath='{.data}' (copy the doub
 
 | base64 --decode
 
+-------------------
+Stats: kubectl exec $POD -c istio-proxy -- curl 'localhost:15000/stats' > stats
+Config Dump: kubectl exec $POD -c istio-proxy -- curl 'localhost:15000/config_dump' > config_dump.json
+Clusters Dump: kubectl exec $POD -c istio-proxy -- curl 'localhost:15000/clusters' > clusters
+Logs: kubectl logs $POD -c istio-proxy > proxy.log
+To enable debug logging, which may be useful if the default log does not provide enough information:
 
-
+At runtime: istioctl proxy-config log POD --level=debug
+For a pod, set annotation: sidecar.istio.io/logLevel: "debug"
+For the whole mesh, install with --set values.global.proxy.logLevel=debug
