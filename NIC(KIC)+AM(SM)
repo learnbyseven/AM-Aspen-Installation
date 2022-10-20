@@ -1,0 +1,5 @@
+Story Board
+-----------
+
+1. session affinity and custom load balancing won't work. If you enable nginx.ingress.kubernetes.io/service-upstream=true which routes traffic via Service(clusterIP).
+2. 
