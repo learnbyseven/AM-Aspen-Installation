@@ -15,7 +15,7 @@ Multicluster
 
 3. kubectl label namespace istio-system topology.istio.io/network=network1
 4. helm install istio-base manifests/charts/base --namespace istio-system
-5. kubectl get crds | grep 'istio.io\|cert-manager.io\|aspenmesh.io' | wc -l
+5. kubectl get crds | grep 'istio.io'| wc -l
 7. helm install istiod manifests/charts/istio-control/istio-discovery  --namespace istio-system --values values.yaml
 
 6. istioctl --kubeconfig=west_kubeconfig.yaml x create-remote-secret --name west | kubectl apply -f -   
