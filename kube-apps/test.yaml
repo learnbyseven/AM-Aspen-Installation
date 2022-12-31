@@ -9,6 +9,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: test-tier
+  namespace: app-tier
   labels:
     app: test-tier
 spec:
