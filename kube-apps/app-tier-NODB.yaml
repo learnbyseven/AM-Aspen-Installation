@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: app-tier-v1
-        image: docker.io/giriraj789/ngapp:v1 
+        image: docker.io/giriraj789/informatica:v1
         ports:
         - containerPort: 80
           name: http-v1
@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
       - name: app-tier-v2
-        image: docker.io/giriraj789/ngapp:v2
+        image: docker.io/giriraj789/informatica:v2
         ports:
         - containerPort: 80
           name: http-v2
