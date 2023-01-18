@@ -58,3 +58,14 @@ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=myown.in./
 openssl req -out client.csr -newkey rsa:2048 -nodes -keyout client.key -subj "/CN=fake.myapp.in/O=client organization"
 openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 1 -in client.csr -out client.crt
 
+
+
+amTraining
+
+CA
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -subj '/O=f5 Inc ./CN=f5.local' -keyout ca.key -out ca.crt
+Server
+openssl req -out server.csr -newkey rsa:2048 -nodes -keyout server.key -subj "/CN=worker1.f5.local/O=f5"
+openssl x509 -req -sha256 -days 365 -CA ca.crt -CAkey ca.key -set_serial 2 -in server.csr -out server.crt
+
+
